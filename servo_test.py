@@ -29,22 +29,23 @@ def move(servo, angle):
           the servo number to command, an integer from 0-7
         angle
           the desired pulse width for servoblaster, an integer from 0 to 249
+    '''
 
-    (e.g.) >>> servo.move(2, 90)
-           ... # "move servo #2 to 90 degrees"'''
+    command = 'echo %s=%s > /dev/servoblaster' % (str(servo), str(angle))
+    os.system(command)
 
-    if (min_pwm <= angle <= max_pwm):
-        command = 'echo %s=%s > /dev/servoblaster' % (str(servo), str(angle))
-        os.system(command)
-        #print command
-    else:
-        print "Servo angle must be an integer between %s and %s.\n" % (str(min_pwm), str(max_pwm))
- 
+#    if (min_pwm <= angle <= max_pwm):
+#        command = 'echo %s=%s > /dev/servoblaster' % (str(servo), str(angle))
+#        os.system(command)
+#        #print command
+#    else:
+#        print "Servo angle must be an integer between %s and %s.\n" % (str(min_pwm), str(max_pwm))
+
 if __name__ == '__main__':
-    moveServo(panGpioPin, 50)
-    moveServo(panGpioPin, 244)
-    moveServo(panGpioPin, 135)
+    print(sys.argv[1])
+    if (sys.argv[1] == "1"):
+      print(sys.argv[2])
+      moveServo(panGpioPin, int(sys.argv[2]))
 
-#  servoTiltPosition = min(servoTiltPosition, max_pwm)
-#  servoTiltPosition = max(servoTiltPosition, min_pwm)  
-#  move(tiltGpioPin, servoTiltPosition)
+    elif (sys.argv[1] == "2"):
+      moveServo(tiltGpioPin, int(sys.argv[2]))

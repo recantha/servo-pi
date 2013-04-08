@@ -1,0 +1,22 @@
+Extract the archive to a directory.
+
+In that directory
+
++-------------------------------------------------------------------+
+|                                                                   |
+| COPY      libpigpio.a-hard or libpigpio.a-soft to libpigpio.a     |
+|                                                                   |
+| ACCORDING to whether you have a hard or soft float distribuition. |
+|                                                                   |
++-------------------------------------------------------------------+
+
+Enter the following commands (in this order)
+
+make install
+make
+
+To test the library do
+
+sudo ./checklib
+
+demolib.c and checklib.c show examples of interfacing with the library.
